@@ -61,4 +61,13 @@ module.exports = class ShadowJson {
       }
     }
   }
+
+  discard(path) {
+    if (path) {
+      let rs = this.s[path];
+      if (rs !== undefined) {
+        delete this.s[path];
+      }
+    }
+  }
 }
