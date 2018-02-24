@@ -1,0 +1,25 @@
+{
+  "name": "ShadowJson",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "microbundle",
+    "dev": "microbundle watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuanfux/SObject.git"
+  },
+  "author": "Yuan Fu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yuanfux/SObject/issues"
+  },
+  "homepage": "https://github.com/yuanfux/SObject#readme",
+  "devDependencies": {
+    "microbundle": "^0.4.4"
+  },
+  "dependencies": {}
+}
