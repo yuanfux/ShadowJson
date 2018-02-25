@@ -8,23 +8,22 @@
     "dist"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "build": "microbundle",
-    "dev": "microbundle watch",
-    "test": "node test.js"
+    "dev": "microbundle watch"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yuanfux/SObject.git"
+    "url": "git+https://github.com/yuanfux/ShadowJson.git"
   },
   "author": "Yuan Fu",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yuanfux/SObject/issues"
+    "url": "https://github.com/yuanfux/ShadowJson/issues"
   },
-  "homepage": "https://github.com/yuanfux/SObject#readme",
+  "homepage": "https://github.com/yuanfux/ShadowJson#readme",
   "devDependencies": {
-    "microbundle": "^0.4.4"
-  },
-  "dependencies": {}
+    "microbundle": "^0.4.4",
+    "mocha": "^5.0.1"
+  }
 }
