@@ -53,15 +53,16 @@ module.exports = class ShadowJson {
     }
 	}
 
-  // get(path) {
-  //   return this._f(this._o, path);
-  // }
-
+  // return all copied path obj when !path
   get(path) {
+    if (!path) {
+      return this._s;
+    }
     return this._s[path];
   }
 
   set(path, val) {
+    if (path == null) return;
     this._s[path] = val;
   }
 
@@ -70,21 +71,33 @@ module.exports = class ShadowJson {
   // }
 
   commit(path) {
-    if(path) {
+    if(path !== undefined) {
       // commit only one path change
       if (this._s.hasOwnProperty(path)) {
         // found requested path in shadow obj
-        if(this._e(this._o, path, this._s[path])) {
-          // found the path and rewrite the path val in original obj
-          delete this._s[path];
-        }
+        // try to commit changes to the original data and delete key
+        this._e(this._o, path, this._s[path])
+        delete this._s[path];
+      }
+    } else {
+      // commit all changes
+      for (const p of Object.keys(this._s)) {
+        this._e(this._o, p, this._s[p])
+        delete this._s[p];
       }
     }
   }
 
   discard(path) {
-    if (path && this._s.hasOwnProperty(path)) {
-      delete this._s[path];
+    if (path !== undefined) {
+      if (this._s.hasOwnProperty(path)) {
+        delete this._s[path];
+      }
+    } else {
+      // discard all changes
+      for (const p of Object.keys(this._s)) {
+        delete this._s[p];
+      }
     }
   }
 }
