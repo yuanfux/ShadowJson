@@ -12,21 +12,32 @@ module.exports = class ShadowJson {
     return obj;
   }
 
-  _rw(obj, path, val) {
-    // rewrite only if the value exists
+  _e(obj, path, val) {
+    // add path val if path does not exist
+    // rewrite path val if path does exist
+    // delete path if path does exist and val === undefined
+    if (!path) return false;
     path = path.split('.');
     const len = path.length;
-    for (let i = 0 ; obj && i < len ; i++) {
+    for (let i = 0 ; i < len ; i++) {
       if (i !== len - 1) {
+        if (obj[path[i]] == null) {
+          // cannot add a new path when val === undefined
+          if (val === undefined) return false;
+          obj[path[i]] = {};
+        }
         obj = obj[path[i]];
       } else {
-        if (obj[path[i]] !== undefined) {
+        // reach here only if has path
+        // if path does not exist, val cannot be undefined
+        if (val !== undefined) {
           obj[path[i]] = this._dc(val);
-          return val;
+        } else {
+          delete obj[path[i]];
         }
+        return true;
       }
     }
-    return undefined;
   }
 
   constructor(obj, paths) {
@@ -42,20 +53,30 @@ module.exports = class ShadowJson {
     }
 	}
 
+  // get(path) {
+  //   return this._f(this.o, path);
+  // }
+
   get(path) {
-    return this._f(this.o, path);
+    return this.s[path];
   }
 
-  sget(path) {
-    return path ? this.s[path] : this.s;
+  set(path, val) {
+    this.s[path] = val;
   }
+
+  // sget(path) {
+  //   return path ? this.s[path] : this.s;
+  // }
 
   commit(path) {
     if(path) {
-      // commit only one change
+      // commit only one path change
       let rs = this.s[path];
       if (rs !== undefined) {
-        if(this._rw(this.o, path, rs) !== undefined) {
+        // found requested path in shadow obj
+        if(this._e(this.o, path, rs) !== undefined) {
+          // found the path and rewrite the path val in original obj
           delete this.s[path];
         }
       }

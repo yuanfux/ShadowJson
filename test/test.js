@@ -56,6 +56,68 @@ test("should return {'c.f':{g:5,h:'6'}, 'c.i':{j:7,k:['8',9]}} when copying 2 de
 	   ['c.f', 'c.i'],
 	   {'c.f':{g:5,h:'6'}, 'c.i':{j:7,k:['8',9]}});
 
+
+describe('ShadowJson', function() {
+  describe('#_e()', function() {
+    const sJson = new ShadowJson(testObj, ['a']);
+    it('test _e() modify', function() {
+        // modify
+        sJson._e(testObj, 'a', 123);
+        console.log(testObj);
+    		assert.deepStrictEqual(testObj.a, 123);
+
+        // deep modify
+        sJson._e(testObj, 'c.f.g', 'ttt');
+        console.log(testObj);
+        assert.deepStrictEqual(testObj.c.f.g, 'ttt');
+
+        // delete
+        sJson._e(testObj, 'a');
+        console.log(testObj);
+        assert.deepStrictEqual(testObj.a, undefined);
+
+        // deep delete
+        sJson._e(testObj, 'c.i.k');
+        console.log(testObj);
+        assert.deepStrictEqual(testObj.c.i.k, undefined);
+
+        // deep delete does not exist
+        assert.deepStrictEqual(sJson._e(testObj, 'a.c'), false);
+        console.log(testObj);
+
+        // add
+        sJson._e(testObj, 'aa', 123);
+        assert.deepStrictEqual(testObj.aa, 123);
+        console.log(testObj);
+
+        // add deep
+        // sJson._e(testObj, 'c.d', 123);
+        // assert.deepStrictEqual(testObj.aa, 123);
+        // console.log(testObj);
+    });
+  });
+});
+
+let obj2 = {
+  a: 1,
+  b: 2,
+  c: '3'
+};
+
+function dset(obj, keys, val) {
+  keys.split && (keys=keys.split('.'));
+  var i=0, l=keys.length, t=obj, x;
+  for (; i < l; ++i) {
+    x = t[keys[i]];
+    t = t[keys[i]] = (i === l - 1 ? val : (x == null ? {} : x));
+  }
+}
+
+dset(obj2, 'a.b.c', 'test');
+
+console.log(obj2);
+
+
 // const sJson3 = new ShadowJson(testObj, ['c.f', 'c.i']);
 // describe('ShadowJson', function() {
 //   describe('#ShadowJson()', function() {
