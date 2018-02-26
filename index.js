@@ -66,10 +66,7 @@ module.exports = class ShadowJson {
     this._s[path] = val;
   }
 
-  // sget(path) {
-  //   return path ? this._s[path] : this._s;
-  // }
-
+  // if related to path/subpath, the most recent path change will be the final version
   commit(path) {
     if(path !== undefined) {
       // commit only one path change
