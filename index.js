@@ -41,54 +41,50 @@ module.exports = class ShadowJson {
   }
 
   constructor(obj, paths) {
-		this.o = obj;
-    this.s = {};
+		this._o = obj;
+    this._s = {};
     if (paths) {
       for (let i = 0 ; i < paths.length ; i++) {
         const r = this._f(obj, paths[i]);
         if (r !== undefined) {
-          this.s[paths[i]] = this._dc(r);
+          this._s[paths[i]] = this._dc(r);
         }
       }
     }
 	}
 
   // get(path) {
-  //   return this._f(this.o, path);
+  //   return this._f(this._o, path);
   // }
 
   get(path) {
-    return this.s[path];
+    return this._s[path];
   }
 
   set(path, val) {
-    this.s[path] = val;
+    this._s[path] = val;
   }
 
   // sget(path) {
-  //   return path ? this.s[path] : this.s;
+  //   return path ? this._s[path] : this._s;
   // }
 
   commit(path) {
     if(path) {
       // commit only one path change
-      let rs = this.s[path];
-      if (rs !== undefined) {
+      if (this._s.hasOwnProperty(path)) {
         // found requested path in shadow obj
-        if(this._e(this.o, path, rs) !== undefined) {
+        if(this._e(this._o, path, this._s[path])) {
           // found the path and rewrite the path val in original obj
-          delete this.s[path];
+          delete this._s[path];
         }
       }
     }
   }
 
   discard(path) {
-    if (path) {
-      let rs = this.s[path];
-      if (rs !== undefined) {
-        delete this.s[path];
-      }
+    if (path && this._s.hasOwnProperty(path)) {
+      delete this._s[path];
     }
   }
 }

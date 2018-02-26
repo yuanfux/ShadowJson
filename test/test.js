@@ -24,7 +24,7 @@ function test(testText, type, args, expected) {
 		describe('ShadowJson', function() {
 		  describe('#ShadowJson()', function() {
 		    it(testText, function() {
-	      	assert.deepStrictEqual(sJson.s, expected);
+	      	assert.deepStrictEqual(sJson._s, expected);
 		    });
 		  });
 		});
@@ -91,9 +91,13 @@ describe('ShadowJson', function() {
         console.log(testObj);
 
         // add deep
-        // sJson._e(testObj, 'c.d', 123);
-        // assert.deepStrictEqual(testObj.aa, 123);
-        // console.log(testObj);
+        sJson._e(testObj, 'c.f.x.z', {'array':[1,2,3], 'string':'123', 'number':123});
+        assert.deepStrictEqual(testObj.c.f.x.z, {'array':[1,2,3], 'string':'123', 'number':123});
+        console.log(testObj);
+        // add an existing path, but not obj
+        sJson._e(testObj, 'c.e.z', {'array':[1,2,3]});
+        assert.deepStrictEqual(testObj.c.e.z, undefined);
+        console.log(testObj);
     });
   });
 });
