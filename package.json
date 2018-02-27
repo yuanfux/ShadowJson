@@ -8,10 +8,9 @@
     "dist"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "build": "microbundle --sourcemap false",
-    "dev": "microbundle watch",
-    "test": "mocha"
+    "dev": "microbundle watch"
   },
   "repository": {
     "type": "git",

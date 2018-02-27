@@ -9,7 +9,7 @@ module.exports = class ShadowJson {
   }
 
 	_f(obj, path) {
-    path = _pv(path) ? path.split('.') : path;
+    path = this._pv(path) ? path.split('.') : path;
     for (let i = 0 ; obj && i < path.length ; i++) {
       obj = obj[path[i]];
     }
@@ -20,7 +20,7 @@ module.exports = class ShadowJson {
     // add path val if path does not exist
     // rewrite path val if path does exist
     // delete path if path does exist and val === undefined
-    if (!_pv(path)) return false;
+    if (!this._pv(path)) return false;
     path = path.split('.');
     const len = path.length;
     for (let i = 0 ; i < len ; i++) {
@@ -67,7 +67,7 @@ module.exports = class ShadowJson {
 
   set(path, val) {
     if (!this._pv(path)) return;
-    this._s[path] = _dc(val);
+    this._s[path] = this._dc(val);
   }
 
   // if related to path/subpath, the most recent path change will be the final version
