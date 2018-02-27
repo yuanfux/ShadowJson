@@ -1,29 +1,30 @@
 {
   "name": "ShadowJson",
   "version": "1.0.0",
-  "description": "",
+  "description": "A small utility class that helps to generate Path-specific and manageable JSON object copy",
   "main": "dist/ShadowJson.js",
   "files": [
     "index.js",
     "dist"
   ],
   "scripts": {
-    "test": "mocha",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "microbundle",
-    "dev": "microbundle watch"
+    "dev": "microbundle watch",
+    "test": "node test.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yuanfux/ShadowJson.git"
+    "url": "git+https://github.com/yuanfux/SObject.git"
   },
   "author": "Yuan Fu",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yuanfux/ShadowJson/issues"
+    "url": "https://github.com/yuanfux/SObject/issues"
   },
-  "homepage": "https://github.com/yuanfux/ShadowJson#readme",
+  "homepage": "https://github.com/yuanfux/SObject#readme",
   "devDependencies": {
-    "microbundle": "^0.4.4",
-    "mocha": "^5.0.1"
-  }
+    "microbundle": "^0.4.4"
+  },
+  "dependencies": {}
 }

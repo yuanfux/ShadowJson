@@ -55,7 +55,7 @@ module.exports = class ShadowJson {
 
   // return all copied path obj when !path
   get(path) {
-    if (!path) {
+    if (path == null) {
       return this._s;
     }
     return this._s[path];
