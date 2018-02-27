@@ -8,7 +8,7 @@
     "dist"
   ],
   "scripts": {
-    "test": "./node_modules/.bin/mocha",
+    "test": "mocha",
     "build": "microbundle --sourcemap false",
     "dev": "microbundle watch"
   },
@@ -23,7 +23,8 @@
   },
   "homepage": "https://github.com/yuanfux/SObject#readme",
   "devDependencies": {
-    "microbundle": "^0.4.4"
+    "microbundle": "^0.4.4",
+    "mocha": "^5.0.1"
   },
   "dependencies": {}
 }
