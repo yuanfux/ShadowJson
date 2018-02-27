@@ -21,8 +21,8 @@ var original = { a: 1, b: '2', c: { d: 5 } };
 var shadow = new ShadowJson(original, ['c']);
 
 // edit the shadow copy
-// modify path 'c'
-shadow.set('c', {z: 7});
+// modify path 'c.d'
+shadow.set('c.d', {x: 7});
 
 // delete path 'b'
 shadow.set('b', undefined);
@@ -36,7 +36,7 @@ shadow.discard('b');
 // commit the rest of the changes
 shadow.commit();
 
-console.log(original); // { a: 1, b: '2', c: { z: 7 }, z: 3 }
+console.log(original); // { a: 1, b: '2', c: { d: { x: 7 } }, z: 3 }
 ```
 
 ## API
