@@ -9,10 +9,12 @@ In many dev cases, we have to keep an original JSON object while having another 
 3. support CJS, ESM and UMD
 
 # Install
+
 `npm install --save ShadowJson`
 
 # Usage
-`
+
+```javascript
 var original = { a: 1, b: '2', c: { d: 5 } };
 
 // create ShadowJson with initial path 'c'
@@ -35,8 +37,7 @@ shadow.discard('b');
 shadow.commit();
 
 console.log(original); // { a: 1, b: '2', c: { z: 7 }, z: 3 }
-
-`
+```
 
 # API
 ## ShadowJson(obj, paths)
