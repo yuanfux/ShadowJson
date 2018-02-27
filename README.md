@@ -8,11 +8,11 @@ In many dev cases, we have to keep an original JSON object while having another 
 4. small implementation (476B)
 3. support CJS, ESM and UMD
 
-# Install
+## Install
 
 `npm install --save ShadowJson`
 
-# Usage
+## Usage
 
 ```javascript
 var original = { a: 1, b: '2', c: { d: 5 } };
@@ -39,14 +39,14 @@ shadow.commit();
 console.log(original); // { a: 1, b: '2', c: { z: 7 }, z: 3 }
 ```
 
-# API
-## ShadowJson(obj, paths)
+## API
+### ShadowJson(obj, paths)
 
 
-## get(path)
+### get(path)
 
-## set(path, val)
+### set(path, val)
 
-## commit(path)
+### commit(path)
 
-## discard(path)
+### discard(path)
