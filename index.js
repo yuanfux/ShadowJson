@@ -1,11 +1,15 @@
 module.exports = class ShadowJson {
 
+  _pv(p) {
+    return !(p == null || p === '');
+  }
+
   _dc(t) {
-    return t ? JSON.parse(JSON.stringify(t)) : undefined;
+    return t !== undefined ? JSON.parse(JSON.stringify(t)) : undefined;
   }
 
 	_f(obj, path) {
-    path = path ? path.split('.') : path;
+    path = _pv(path) ? path.split('.') : path;
     for (let i = 0 ; obj && i < path.length ; i++) {
       obj = obj[path[i]];
     }
@@ -16,7 +20,7 @@ module.exports = class ShadowJson {
     // add path val if path does not exist
     // rewrite path val if path does exist
     // delete path if path does exist and val === undefined
-    if (!path) return false;
+    if (!_pv(path)) return false;
     path = path.split('.');
     const len = path.length;
     for (let i = 0 ; i < len ; i++) {
@@ -55,20 +59,20 @@ module.exports = class ShadowJson {
 
   // return all copied path obj when !path
   get(path) {
-    if (path == null) {
+    if (!this._pv(path)) {
       return this._s;
     }
     return this._s[path];
   }
 
   set(path, val) {
-    if (path == null) return;
-    this._s[path] = val;
+    if (!this._pv(path)) return;
+    this._s[path] = _dc(val);
   }
 
   // if related to path/subpath, the most recent path change will be the final version
   commit(path) {
-    if(path !== undefined) {
+    if(this._pv(path)) {
       // commit only one path change
       if (this._s.hasOwnProperty(path)) {
         // found requested path in shadow obj
@@ -86,7 +90,7 @@ module.exports = class ShadowJson {
   }
 
   discard(path) {
-    if (path !== undefined) {
+    if (this._pv(path)) {
       if (this._s.hasOwnProperty(path)) {
         delete this._s[path];
       }

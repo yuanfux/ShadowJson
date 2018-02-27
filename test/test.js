@@ -54,19 +54,9 @@ function test(testText, type, args, expected, path) {
     });
   } else if (type === 3) {
     describe('ShadowJson', function() {
-      describe('#commit()', function() {
-        it(testText, function() {
-          sJson.set(path, expected);
-          sJson.commit(path);
-          assert.deepStrictEqual(pathHelper(testObj, path), expected);
-        });
-      });
-    });
-  } else if (type === 4) {
-    describe('ShadowJson', function() {
       describe('#discard()', function() {
         it(testText, function() {
-          assert.deepStrictEqual(sJson.get(), expected);
+          assert.deepStrictEqual(sJson.get(path), expected);
         });
       });
     });
@@ -136,6 +126,7 @@ function testCommit() {
         sJson.set('c.f.z', {'m':[5,6,7],'n':{'y':1}}); // add deep
         sJson.set('b', undefined) // delete
         sJson.set('c.i.k', undefined) // delete deep
+        sJson.set('c.d.e', 123); // invalid path
         sJson.commit();
         assert.deepStrictEqual(pathHelper(testObj, 'a'), 10);
         assert.deepStrictEqual(pathHelper(testObj, 'c.f.h'), {'k':10});
@@ -143,8 +134,49 @@ function testCommit() {
         assert.deepStrictEqual(pathHelper(testObj, 'c.f.z'), {'m':[5,6,7],'n':{'y':1}});
         assert.deepStrictEqual(pathHelper(testObj, 'b'), undefined);
         assert.deepStrictEqual(pathHelper(testObj, 'c.i.k'), undefined);
+        assert.deepStrictEqual(pathHelper(testObj, 'c.d.e'), undefined);
+        assert.deepStrictEqual(sJson.get(), {});
       });
+    });
+  });
+}
 
+function testDiscard() {
+  var testObj = {
+    a: 1,
+    b: '2',
+    c: {
+      d: 3,
+      e: '4',
+      f: {
+        g: 5,
+        h: '6'
+      },
+      i: {
+        j: 7,
+        k: ['8', 9]
+      }
+    }
+  };
+  describe('ShadowJson', function() {
+    describe('#discard()', function() {
+      const sJson = new ShadowJson(testObj, ['a']);
+      it("should return {} when discarding a path 'a'", function() {
+        sJson.discard('a');
+        assert.deepStrictEqual(sJson.get(), {});
+      });
+      it("should return {} when discarding an non-existent path 'c.i.k.j'", function() {
+        sJson.discard('c.i.k.j');
+        assert.deepStrictEqual(sJson.get(), {});
+      });
+      it("should return {} when discarding all changed paths", function() {
+        sJson.set('a', 1);
+        sJson.set('c.f.g', 'z');
+        sJson.set('c.i.k', {'v':{'x':3}});
+        sJson.set('b', undefined);
+        sJson.discard();
+        assert.deepStrictEqual(sJson.get(), {});
+      });
     });
   });
 }
@@ -229,47 +261,4 @@ test("should return unchanged paths and entries when setting an invalid path to 
 
 testCommit();
 
-// describe('ShadowJson', function() {
-//   describe('#_e()', function() {
-//     const sJson = new ShadowJson(testObj, ['a']);
-//     it('test _e() modify', function() {
-//         // modify
-//         sJson._e(testObj, 'a', 123);
-//         console.log(testObj);
-//     		assert.deepStrictEqual(testObj.a, 123);
-
-//         // deep modify
-//         sJson._e(testObj, 'c.f.g', 'ttt');
-//         console.log(testObj);
-//         assert.deepStrictEqual(testObj.c.f.g, 'ttt');
-
-//         // delete
-//         sJson._e(testObj, 'a');
-//         console.log(testObj);
-//         assert.deepStrictEqual(testObj.a, undefined);
-
-//         // deep delete
-//         sJson._e(testObj, 'c.i.k');
-//         console.log(testObj);
-//         assert.deepStrictEqual(testObj.c.i.k, undefined);
-
-//         // deep delete does not exist
-//         assert.deepStrictEqual(sJson._e(testObj, 'a.c'), false);
-//         console.log(testObj);
-
-//         // add
-//         sJson._e(testObj, 'aa', 123);
-//         assert.deepStrictEqual(testObj.aa, 123);
-//         console.log(testObj);
-
-//         // add deep
-//         sJson._e(testObj, 'c.f.x.z', {'array':[1,2,3], 'string':'123', 'number':123});
-//         assert.deepStrictEqual(testObj.c.f.x.z, {'array':[1,2,3], 'string':'123', 'number':123});
-//         console.log(testObj);
-//         // add an existing path, but not obj
-//         sJson._e(testObj, 'c.e.z', {'array':[1,2,3]});
-//         assert.deepStrictEqual(testObj.c.e.z, undefined);
-//         console.log(testObj);
-//     });
-//   });
-// });
+testDiscard();
