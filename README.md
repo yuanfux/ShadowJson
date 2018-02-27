@@ -1,4 +1,4 @@
-# ShadowJson
+# ShadowJson [![Build Status](https://travis-ci.org/yuanfux/ShadowJson.svg?branch=master)](https://travis-ci.org/yuanfux/ShadowJson)
 > A small utility class that helps to generate Path-specific and manageable JSON object copy
 
 ## Why?
@@ -50,3 +50,6 @@ console.log(original); // { a: 1, b: '2', c: { d: { x: 7 } }, z: 3 }
 ### commit(path)
 
 ### discard(path)
+
+## License
+MIT
