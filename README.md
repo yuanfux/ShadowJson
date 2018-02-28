@@ -77,6 +77,7 @@ Name | Type | Description
 --- | --- | ---
 `path` | `String` | Discard all changes if this param is not provided.
 
-> Note: Avoid using `'.'` or `''` as object keys in the source data.
+> **Note**: Avoid using `'.'` or `''` as object keys in the source data.
+
 ## License
 MIT
