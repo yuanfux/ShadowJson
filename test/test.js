@@ -1,19 +1,6 @@
 var assert = require('assert');
 var ShadowJson = require('../dist/ShadowJson');
 
-// var original = { a: 1, b: '2', c: { d: 5 } };
-// var shadow = new ShadowJson(original, ['c']);
-// shadow.set('c.d', {x: 7});
-// shadow.set('b', undefined);
-// shadow.set('z', 3);
-// shadow.discard('b');
-// shadow.commit();
-// // { a: 1, b: '2', c: { d: { x: 7 } }, z: 3 }
-// console.log(original);
-
-
-
-
 function pathHelper(obj, path) {
     path = path ? path.split('.') : path;
     for (let i = 0 ; obj && i < path.length ; i++) {

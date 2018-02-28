@@ -5,7 +5,7 @@
 In many dev cases, we have to keep an original JSON object while having another deep copied object for editing. Simply deep copying the whole object can lead to unnecessary memory usage and hard management with the original data. ShadowJson solves these problems by following features: 
 1. allow path-specific clone
 2. easy commit/discard changes
-4. small implementation (476B)
+4. small implementation (476 bytes)
 3. support CJS, ESM and UMD
 
 ## Install
