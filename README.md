@@ -15,10 +15,10 @@ In many dev cases, we have to keep an original JSON object while having another 
 ## Usage
 
 ```javascript
-var original = { a: 1, b: '2', c: { d: 5 } };
+var source = { a: 1, b: '2', c: { d: 5 } };
 
 // create ShadowJson with initial path 'c'
-var shadow = new ShadowJson(original, ['c']);
+var shadow = new ShadowJson(source, ['c']);
 
 // edit the shadow copy
 // modify path 'c.d'
