@@ -1,10 +1,10 @@
 {
-  "name": "ShadowJson",
+  "name": "shadowjson",
   "version": "1.0.0",
   "description": "A small utility class that helps to generate path-specific and manageable JSON object copy",
   "main": "dist/ShadowJson.js",
   "files": [
-    "index.js",
+    "src",
     "dist"
   ],
   "scripts": {
