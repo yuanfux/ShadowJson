@@ -1,5 +1,5 @@
-var assert = require('assert');
-var ShadowJson = require('../dist/ShadowJson');
+const assert = require('assert');
+const ShadowJson = require('../dist/ShadowJson');
 
 function pathHelper(obj, path) {
     path = path ? path.split('.') : path;
@@ -10,7 +10,7 @@ function pathHelper(obj, path) {
   }
 
 function test(testText, type, args, expected, path) {
-  var testObj = {
+  let testObj = {
     a: 1,
     b: '2',
     c: {
@@ -64,7 +64,7 @@ function test(testText, type, args, expected, path) {
 }
 
 function testCommit() {
-  var testObj = {
+  let testObj = {
     a: 1,
     b: '2',
     c: {
@@ -142,7 +142,7 @@ function testCommit() {
 }
 
 function testDiscard() {
-  var testObj = {
+  let testObj = {
     a: 1,
     b: '2',
     c: {
