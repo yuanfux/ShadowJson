@@ -45,7 +45,7 @@ console.log(original); // { a: 1, b: '2', c: { d: { x: 7 } }, z: 3 }
 
 Name | Type | Description
 --- | --- | ---
-`obj` | `Object` | **Required.**The JSON Object used as the source data.
+`obj` | `Object` | __Required.__The JSON Object used as the source data.
 `paths` | `Array<String>` | The paths need to be copied.
 
 ### get(path)
@@ -60,7 +60,7 @@ Name | Type | Description
 
 Name | Type | Description
 --- | --- | ---
-`path` | `String` | **Required.**The path to be set.
+`path` | `String` | __Required.__The path to be set.
 `val` | `Any` | The path will be set to `undefined` if this param is not provided.
 
 ### commit(path)
