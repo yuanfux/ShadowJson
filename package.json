@@ -16,7 +16,7 @@
     "shadow json",
     "editable",
     "copy",
-    "clone",
+    "clone"
   ],
   "repository": {
     "type": "git",
