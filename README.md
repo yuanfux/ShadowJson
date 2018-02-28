@@ -1,4 +1,4 @@
-# ShadowJson [![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/shadowjson) [![Build Status](https://travis-ci.org/yuanfux/ShadowJson.svg?branch=master)](https://travis-ci.org/yuanfux/ShadowJson)
+# ShadowJson [![npm](https://img.shields.io/npm/v/shadowjson.svg)](https://www.npmjs.com/package/shadowjson) [![Build Status](https://travis-ci.org/yuanfux/ShadowJson.svg?branch=master)](https://travis-ci.org/yuanfux/ShadowJson)
 > A small utility class that helps to generate path-specific and manageable JSON object copy
 
 ## Why
