@@ -41,7 +41,7 @@ console.log(original); // { a: 1, b: '2', c: { d: { x: 7 } }, z: 3 }
 
 ## API
 ### ShadowJson(obj, paths)
-#### The ShadowJson constructor. Returns `Object`.
+#### The ShadowJson constructor. _Returns `Object`_.
 
 Name | Type | Description
 --- | --- | ---
