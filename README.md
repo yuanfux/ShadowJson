@@ -38,7 +38,7 @@ shadow.discard('b');
 // commit the rest of the changes
 shadow.commit();
 
-console.log(original); // { a: 1, b: '2', c: { d: { x: 7 } }, z: 3 }
+console.log(source); // { a: 1, b: '2', c: { d: { x: 7 } }, z: 3 }
 ```
 
 ## API
