@@ -48,6 +48,8 @@ Name | Type | Description
 `obj` | `Object` | **Required**.The JSON Object used as the source data.
 `paths` | `Array<String>` | The paths need to be copied.
 
+> **Note**: Avoid using `'.'` or `''` as object keys in the source data.
+
 ### get(path)
 > Get the value of a copied path.
 
@@ -70,14 +72,14 @@ Name | Type | Description
 --- | --- | ---
 `path` | `String` | Commit all changes if this param is not provided.
 
+> **Note**: If changes are made to a path and its subpath, the most recent path change will override.
+
 ### discard(path)
 > Discard changes made to ShadowObject
 
 Name | Type | Description
 --- | --- | ---
 `path` | `String` | Discard all changes if this param is not provided.
-
-> **Note**: Avoid using `'.'` or `''` as object keys in the source data.
 
 ## License
 MIT
