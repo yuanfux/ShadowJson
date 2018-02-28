@@ -60,7 +60,7 @@ Name | Type | Description
 
 Name | Type | Description
 --- | --- | ---
-`path` | `String` | __Required__.The path to be set.
+`path` | `String` | **Required**.The path to be set.
 `val` | `Any` | The path will be set to `undefined` if this param is not provided.
 
 ### commit(path)
