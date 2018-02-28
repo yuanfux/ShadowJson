@@ -41,7 +41,7 @@ console.log(original); // { a: 1, b: '2', c: { d: { x: 7 } }, z: 3 }
 
 ## API
 ### ShadowJson(obj, paths)
-> The ShadowJson constructor.
+#### The ShadowJson constructor.
 
 Name | Type | Description
 --- | --- | ---
@@ -51,14 +51,14 @@ Name | Type | Description
 > **Note**: Avoid using `'.'` or `''` as object keys in the source data.
 
 ### get(path)
-> Get the value of a copied path.
+#### Get the value of a copied path.
 
 Name | Type | Description
 --- | --- | ---
 `path` | `String` | return an `Object` of all copied path and value pairs if this param is not provided.
 
 ### set(path, val)
-> Set the value of a path.
+#### Set the value of a path.
 
 Name | Type | Description
 --- | --- | ---
@@ -66,7 +66,7 @@ Name | Type | Description
 `val` | `Any` | The path will be set to `undefined` if this param is not provided.
 
 ### commit(path)
-> Commit the changes to the source data.
+#### Commit the changes to the source data.
 
 Name | Type | Description
 --- | --- | ---
@@ -75,7 +75,7 @@ Name | Type | Description
 > **Note**: If changes are made to a path and its subpath, the most recent path change will override.
 
 ### discard(path)
-> Discard changes made to ShadowObject
+#### Discard changes made to ShadowObject
 
 Name | Type | Description
 --- | --- | ---
