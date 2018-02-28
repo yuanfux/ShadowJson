@@ -51,14 +51,14 @@ Name | Type | Description
 > **Note**: Avoid using `'.'` or `''` as object keys in the source data.
 
 ### get(path)
-#### Get the value of a copied path. Returns `Any`.
+#### Get the value of a copied path. _Returns `Any`_.
 
 Name | Type | Description
 --- | --- | ---
 `path` | `String` | return an `Object` of all copied path and value pairs if this param is not provided.
 
 ### set(path, val)
-#### Set the value of a path. Returns `void`.
+#### Set the value of a path. _Returns `void`_.
 
 Name | Type | Description
 --- | --- | ---
@@ -66,7 +66,7 @@ Name | Type | Description
 `val` | `Any` | The path will be set to `undefined` if this param is not provided.
 
 ### commit(path)
-#### Commit the changes to the source data. Returns `void`.
+#### Commit the changes to the source data. _Returns `void`_.
 
 Name | Type | Description
 --- | --- | ---
@@ -75,7 +75,7 @@ Name | Type | Description
 > **Note**: If changes are made to a path and its subpath, the most recent path change will override.
 
 ### discard(path)
-#### Discard changes made to ShadowObject. Returns `void`.
+#### Discard changes made to ShadowObject. _Returns `void`_.
 
 Name | Type | Description
 --- | --- | ---
