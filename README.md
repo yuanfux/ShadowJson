@@ -1,7 +1,7 @@
 # ShadowJson [![Build Status](https://travis-ci.org/yuanfux/ShadowJson.svg?branch=master)](https://travis-ci.org/yuanfux/ShadowJson)
 > A small utility class that helps to generate path-specific and manageable JSON object copy
 
-## Why?
+## Why
 In many dev cases, we have to keep an original JSON object while having another deep copied object for editing. Simply deep copying the whole object can lead to unnecessary memory usage and hard management with the original data. ShadowJson solves these problems by following features: 
 1. allow path-specific clone
 2. easy commit/discard changes
